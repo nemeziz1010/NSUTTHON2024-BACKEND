@@ -7,6 +7,7 @@ const SMTP_HOST = process.env.SMTP_HOST;
 const SMTP_PORT = process.env.SMTP_PORT;
 const SMTP_EMAIL = process.env.SMTP_EMAIL;
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // Add this to your .env file
 
 console.log("SMTP Configuration:");
 console.log("Host:", SMTP_HOST);
@@ -16,6 +17,26 @@ console.log(
   "Password:",
   SMTP_PASSWORD && SMTP_PASSWORD.startsWith("*") ? "********" : SMTP_PASSWORD
 ); // Optional: Obfuscate if you wish
+
+// reCAPTCHA verification function
+const verifyRecaptcha = async (token) => {
+  try {
+    const response = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      null,
+      {
+        params: {
+          secret: RECAPTCHA_SECRET_KEY,
+          response: token,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error during reCAPTCHA verification:", error);
+    throw new Error("reCAPTCHA verification failed.");
+  }
+};
 
 // SMTP configuration
 const transporter = nodemailer.createTransport({
@@ -49,8 +70,23 @@ const transporter = nodemailer.createTransport({
 // // Call the function to send the test email when the server starts
 // sendTestEmail();
 
-router.post("/register", (req, res) => {
-  const { teamName, members } = req.body;
+router.post("/register", async (req, res) => {
+  const { teamName, members, recaptchaToken } = req.body;
+
+  // Verify reCAPTCHA token
+  if (!recaptchaToken) {
+    return res.status(400).json({ error: "reCAPTCHA token is missing" });
+  }
+
+  try {
+    const recaptchaResponse = await verifyRecaptcha(recaptchaToken);
+
+    if (!recaptchaResponse.success || recaptchaResponse.score < 0.5) {
+      return res.status(400).json({ error: "Failed reCAPTCHA validation" });
+    }
+  } catch (error) {
+    return res.status(500).json({ error: "Error verifying reCAPTCHA" });
+  }
 
   if (!teamName || !members || members.length > 6) {
     return res.status(400).json({ error: "Invalid data provided" });
