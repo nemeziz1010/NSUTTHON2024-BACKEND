@@ -3,11 +3,13 @@ const router = express.Router();
 const knex = require("../utils/db.js");
 const nodemailer = require("nodemailer");
 const { teamsCache } = require("../utils/cache.js");
+// const { default: axios } = require("axios");
 const SMTP_HOST = process.env.SMTP_HOST;
 const SMTP_PORT = process.env.SMTP_PORT;
 const SMTP_EMAIL = process.env.SMTP_EMAIL;
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // Add this to your .env file
+const axios = require ("axios");
 
 console.log("SMTP Configuration:");
 console.log("Host:", SMTP_HOST);
