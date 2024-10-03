@@ -90,48 +90,48 @@ router.post("/admin/login", async (req, res) => {
 //   }
 // });
 
-router.post("/admin/signup", async (req, res) => {
-  try {
-    const { username, password } = req.body;
+// router.post("/admin/signup", async (req, res) => {
+//   try {
+//     const { username, password } = req.body;
 
-    // Validate necessary fields
-    if (!username || !password) {
-      return res
-        .status(400)
-        .send("All fields (username, password) are required.");
-    }
+//     // Validate necessary fields
+//     if (!username || !password) {
+//       return res
+//         .status(400)
+//         .send("All fields (username, password) are required.");
+//     }
 
-    // Check for duplicate users
-    const existingUser = await knex("user")
-      .select("user_id")
-      .where("username", username)
-      .first();
+//     // Check for duplicate users
+//     const existingUser = await knex("user")
+//       .select("user_id")
+//       .where("username", username)
+//       .first();
 
-    if (existingUser) {
-      return res
-        .status(409)
-        .send("User with the provided mobile number already exists.");
-    }
+//     if (existingUser) {
+//       return res
+//         .status(409)
+//         .send("User with the provided mobile number already exists.");
+//     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+//     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Insert new user and get the user ID
-    const [userId] = await knex("user")
-      .insert({
-        username,
-        password: hashedPassword,
-      })
-      .returning("user_id"); // This will return the ID of the newly inserted user
+//     // Insert new user and get the user ID
+//     const [userId] = await knex("user")
+//       .insert({
+//         username,
+//         password: hashedPassword,
+//       })
+//       .returning("user_id"); // This will return the ID of the newly inserted user
 
-    // Generate a JWT for the user
-    const user = { id: userId };
-    const accessToken = jwt.sign(user, JWT_SECRET);
+//     // Generate a JWT for the user
+//     const user = { id: userId };
+//     const accessToken = jwt.sign(user, JWT_SECRET);
 
-    res.status(201).json({ message: "User created successfully", accessToken });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Server error");
-  }
-});
+//     res.status(201).json({ message: "User created successfully", accessToken });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send("Server error");
+//   }
+// });
 
 module.exports = router;
