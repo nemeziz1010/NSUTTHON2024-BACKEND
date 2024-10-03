@@ -4,7 +4,7 @@ const { Storage } = require("@google-cloud/storage");
 const shortUUID = require("short-uuid");
 const sharp = require("sharp");
 
-const GCP_SERVICE_ACCOUNT_KEY_PATH = require("/etc/secrets/vaulted-bonsai-437410-h8-0cc8128f5454.json");
+const GCP_SERVICE_ACCOUNT_KEY_PATH = "/etc/secrets/vaulted-bonsai-437410-h8-0cc8128f5454.json";
 console.log(GCP_SERVICE_ACCOUNT_KEY_PATH);
 const GCP_PROJECT_ID = process.env.GCP_PROJECT_ID;
 const GCP_BUCKET_NAME = process.env.GCP_BUCKET_NAME;
