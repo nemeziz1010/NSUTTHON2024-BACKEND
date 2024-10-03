@@ -159,10 +159,10 @@ router.post("/register", async (req, res) => {
           Carefully go through the instructions given below:
           </p>
         <ol style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 10px;">
-          <li>Every team member must register on the stockgro website <a className="font-bold text-blue-500"href="https://community.stockgro.club/form/10312eef-5387-439b-a6fa-d382a1fef702">(click here)</a> and create a profile using their personal email id to complete the first leg of your registration.</li>
+          <li>Every team member must register on the stockgro website <a className="font-bold text-blue-500"href="https://community.stockgro.club/form/10312eef-5387-439b-a6fa-d382a1fef702">(click here)</a> and create a profile using their personal email id to complete the first leg of their registration.</li>
           <li>It is the team leader's responsibility to ensure all members complete the task and then submit their screenshots in the google form to completely register and be a part of NSUTTHON.</li>
           <li>
-            For the second part of the registration process, you must fill out this short survey  <a className="font-bold text-blue-500"href="https://docs.google.com/forms/d/e/1FAIpQLSftK9XFBIP7KF4kQriCuNqciEta4iw4sjr3CA5mmiAaclFrRA/viewform">(click here)</a>, and enter details of an school-going child you know, it can be your sibling, relative or neighbour.
+            For the second part of the registration process, you must fill out this short survey  <a className="font-bold text-blue-500"href="https://docs.google.com/forms/d/e/1FAIpQLSftK9XFBIP7KF4kQriCuNqciEta4iw4sjr3CA5mmiAaclFrRA/viewform">(click here)</a>, and enter details of a school-going child you know, it can be your sibling, relative or neighbour.
             </li>
         </ol>
         <p style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 20px;">As the team captain, you're responsible for ensuring all team members have registered and you have to submit a screenshot of the same on the google form, positively.</p>
