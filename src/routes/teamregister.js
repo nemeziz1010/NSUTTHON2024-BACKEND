@@ -169,9 +169,9 @@ router.post("/register", async (req, res) => {
         <p style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 20px;">Note: Each member can only register using one email per device. Multiple entries from the same device are prohibited.</p>
         <p style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 20px;">If your team is unable to complete the tasks, your team will unfortunately be disqualified.</p>
         <p style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 20px;">If you have any questions or concerns, please feel free to reach out to us. A link to our Whatsapp group is attached here with:
-            <a href="https://chat.whatsapp.com/IOKnp0w5GhV7wopGc8StZs" target="_blank" rel="noopener noreferrer" className="font-bold"> Whatsapp Group</a>.</p>
+            <a href="https://chat.whatsapp.com/IOKnp0w5GhV7wopGc8StZs" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-500"> Whatsapp Group</a>.</p>
         <p style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 20px;">Complete your registration by filling out this Google form: 
-          <a href="https://forms.gle/BSJfaaLhv1jt378Y9" target="_blank" rel="noopener noreferrer"> https://forms.gle/BSJfaaLhv1jt378Y9</a>.</p>
+          <a href="https://forms.gle/BSJfaaLhv1jt378Y9" target="_blank" rel="noopener noreferrer classname="text-blue-500"> https://forms.gle/BSJfaaLhv1jt378Y9</a>.</p>
 
         <p style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 20px;">Best Regards,</p>
         <p style="color: #666; font-size: 16px; line-height: 1.5; margin-top: 20px;">Team Crosslinks</p>
